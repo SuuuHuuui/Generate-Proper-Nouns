@@ -14,7 +14,7 @@ const sheetData = sheets[0].data
 //console.log(sheets[0].data)
 
 // 定义数据列表
-let testList = {} //装标题行+数据行
+let testList = [] //装标题行+数据行
 
 
 // 循环拼装数据
@@ -28,37 +28,35 @@ sheetData.forEach((item, index) =>
      else 
          {
              testList.push({
-             
-              ID: item[0],
-              Account: item[1],
-              Name: item[2],
-              'First Name': item[3],
-              'Last Name': item[4],
-              Title: item[5],
-              City: item[6],
-              'State/Prov': item[7],
-              Geo: item[8],
-              Country: item[9],
-              Building: item[10],
-              'Work Address':item[11],
-              'Organization Name': item[12],
-              'Supervisory Org/Division': item[13]
-          
-           
+                ID: item[0],
+                Account: item[1],
+                Name: item[2],
+                'First Name': item[3],
+                'Last Name': item[4],
+                Title: item[5],
+                City: item[6],
+                'State/Prov': item[7],
+                Geo: item[8],
+                Country: item[9],
+                Building: item[10],
+                'Work Address':item[11],
+                'Organization Name': item[12],
+                'Supervisory Org/Division': item[13]
              })
+           
             
          }
         
 })
 
-//console.log(testList)
+console.log(testList)
  
-const jsonObj = testList
+//const jsonObj = testList
  
 // 不压缩的情况
 // fs.writeFileSync('./Test_Employee1.json',JSON.stringify(jsonObj, null, "\t"));
  
 // 压缩的情况
-fs.writeFileSync("./Employee_result.json", JSON.stringify(jsonObj))
+//fs.writeFileSync("./Employee_result.json", JSON.stringify(jsonObj))
  
-console.log('文件转换完成')
+//console.log('文件转换完成')
