@@ -2,30 +2,31 @@
 * 更新功能：
 1.xlxs数据标题行自行读入数组，不再使用手动对照增加
 2.所得数组用module导出，不需要变成json
-* 版本号2.1
+* 版本号2.2
 */
 const xlsx = require("node-xlsx")
 const fs = require("fs")
 
 // 读取xlsx
-const sheets = xlsx.parse("./Employee_data.xlsx")
 
-function GetExcelData ()
+function GetExcelData(Path)
 {
+    // 读取xlsx
+    const sheets = xlsx.parse(Path)
     // 获取xlsx第一个标签栏的数据
     const sheetData = sheets[0].data
 
     // 定义数据列表
-    let testTitle =  [] //装标题行
 
-    let testList = [] //装标题行+数据行
+    const List = [] //装标题行+数据行
 
-    testTitle = sheetData[0]//读入标题行
+    const Title = sheetData[0]//读入标题行
     
     // 循环拼装数据
     sheetData.forEach((item, index) => 
     {
-        var vot = {}
+        //整一个新对象
+        vot = {}
         if (index == 0)
             {
                 return
@@ -33,16 +34,16 @@ function GetExcelData ()
                 
         else 
             {
-                  for(var i = 0 ; i < testTitle.length ; i++)
+                  for(var i = 0 ; i < Title.length ; i++)
                   {
-                        vot[testTitle[i]] = item[i]
+                        vot[Title[i]] = item[i]
                   }
                     
-                  testList.push(vot)
+                  List.push(vot)
             }
         
     })
-    return testList
+    return List
     //console.log("Can you see me?")
 }
 
