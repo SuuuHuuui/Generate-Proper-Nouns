@@ -12,7 +12,8 @@ const  {GetExcelData_Function} = require("./Step1-xlsx2List")//读取Excel数据
 const  {Get_deduplication} = require("./deduplication") //去重工具
 
 //2.输入文件路径并使用List接收返回的变量
-const List = GetExcelData_Function('D://Autodesk/Ives_data/employee_data.xlsx')
+const List = GetExcelData_Function('D://Autodesk/Ives_task/Employees/Employees/All Employees.xlsx')
+//const List = GetExcelData_Function('D://Autodesk/Ives_task/Employees/Employees/All Employees.xlsx')
 
 //4.准备好txt文件
 let abbreviation = fs.createWriteStream('./abbreviation.txt', {
@@ -103,8 +104,8 @@ let abbreviation = fs.createWriteStream('./abbreviation.txt', {
  let LIST3 =  LIST2.join(' ') //用来装变成一条字符串的LIST2
  
  ///(2)对特定字符串进行正则表达式的匹配
- ////观察到的缩写特性：首字母大写+小写字母1-3个左右+特殊符号"."
- let regex = /[A-Z]{1}[a-z]{1,3}[.]/g
+ ////观察到的缩写特性：首字母大写+小写字母1-5个左右+特殊符号"."
+ let regex = /[A-Z]{1}[a-z]{1,5}[.]/g
 
  ///(3)将匹配出来的缩写放入新数组中
  let Abbreviation = LIST3.match(regex)
